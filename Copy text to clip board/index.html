@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Text to Clipboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p id="p1" style="font-size:28px;">How to copy the text from a Clipboard</p>
+    <div class="box">
+        <p id="content">Click on the icon to copy the text to Clipboard !</p>
+        <i class="fa fa-copy" onclick="copy()"></i>
+    </div>
+
+    <div class="box-2">
+        <input type="text">
+    </div>
+
+    <script>
+        function copy(){
+            var content = document.getElementById('content').innerHTML;
+            var el = document.createElement('textarea');
+
+            el.value = content;
+            el.setAttribute('readonly','');
+            el.style = {position:'absolute', left:'-9999px'}
+
+            document.querySelector('body').appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            alert('copied');
+            document.querySelector('body').removeChild(el);
+        }
+    </script>
+</body>
+</html>
